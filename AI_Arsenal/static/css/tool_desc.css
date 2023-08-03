@@ -1,0 +1,29 @@
+#tool_desc {
+  display: flex;
+  margin: 30px 0;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+#tool_desc .tool-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+}
+
+
+#tool_desc .tool-box img{
+    width: 600px;
+    padding: 20px;
+    border-radius: 50px;
+}
+
+.tool-info{
+    padding: 20px;
+}
+

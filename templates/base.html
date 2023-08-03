@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - Bricks.io - Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#3a9fff">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <script>
+        $("#myCarousel").carousel({
+            interval: false
+        });
+
+    </script>
+
+    {% block styles %}
+    {% endblock %}
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <div class="header__logo"><img class="header__img" src="{% static 'img/logo.png' %}">
+                <a href="{% url 'home' %}">
+                    <h1 class="header__title">AI Arsenal</h1>
+                </a>
+            </div>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <div class="header__menu">
+                <nav id="navbar" class="header__nav collapse">
+                    <ul class="header__elenco">
+                        <li class="header__el"><a href="{% url 'home' %}" class="header__link">Home</a></li>
+                        <li class="header__el"><a href="{% url 'contact' %}" class="header__link">Contact us</a></li>
+                        <li class="header__el header__el--blue"><a href="" class="btn btn--white">Submit →</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+
+    {% block body %} {% endblock %}
+
+
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-xs-6">
+                    <img class="footer__img" src="{% static 'img/logo.png' %}">
+                    <!-- <h1 class="footer__title">AI Arsenal<span class="footer__light">.io</span></h1> -->
+                    <h1 class="footer__title">AI Arsenal</h1>
+                </div>
+                <div class="col-md-10 col-xs-6">
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-l">
+                            <img src="{% static 'img/twitter.svg' %}" />
+                        </a>
+                        <a href="#" class="footer__social-l">
+                            <img src="{% static 'img/fb.svg' %}" />
+                        </a>
+
+                        <a href="#" class="footer__social-l">
+                            <img src="{% static 'img/website.svg' %}" />
+                        </a>
+
+                        <a href="" class="footer__social-l">
+                            <img src="{% static 'img/linkedin.svg' %}" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

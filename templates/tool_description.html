@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/tool_desc.css' %}">
+{% endblock %}
+
+
+{% block body %}
+<div id="tool_desc">
+  <div class="tool-box">
+    <div class="product">
+      <img class="tablet float" src="{{single_tool.image.url}}" />
+    </div>
+    
+    <div class=" right-rounded-column">
+      <div class="tool-info">
+        <h1>{{single_tool.name}}</h1>
+
+        <p>{{single_tool.description}}</p>
+        <p class="price-box__feat">
+            {% for category in single_tool.category.all %}
+            <span style="border: 2px solid #8198ae; border-radius: 35px; padding: 5px 10px; margin: 0 2px;">
+              {{category.category_name }}
+            </span>
+            {% endfor %}
+          </p>
+        <a href="{{single_tool.link}}"><button class="btn" style="margin-top: 15px;"> Visit {{single_tool.name}} </button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="sect sect--padding-bottom">
+  <div class="container">
+    <div class="row row--center">
+      <h1 class="row__title">
+        Similar Tools
+      </h1>
+    </div>
+    <div class="row row--center row--margin">
+      {% for tool in tools %}
+      <div class="col-md-4 col-sm-4 price-box price-box--purple" style="margin-bottom: 50px;">
+        <div class="price-box__wrap">
+          <img src="{{tool.image.url}}" alt="" class="price-box__img">
+          <h1 class="price-box__title">
+            <a href="{{tool.get_url}}" style="text-decoration: none;">{{ tool.name }}</a>
+          </h1>
+
+
+          <a href="{{tool.get_url}}" style="text-decoration: none;">
+            <p class="price-box__price">
+              {{tool.description | truncatechars:80}}
+            </p>
+          </a>
+          {% with first_category=tool.category.first %}
+          <p class="price-box__feat">
+            <span style="border: 2px solid #8198ae; border-radius: 35px; padding: 5px 10px;">
+              {{first_category.category_name }}
+            </span>
+          </p>
+          {% endwith %}
+          <div class="price-box__btn">
+            <a class="btn btn--purple btn--width" href="{{ tool.link }}">Visit Site</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+
+<div class="sect sect--violet ">
+  <img src="{% static 'img/path3762.png' %}" class="career-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="career_title">AI Arsenal - Unleashing the Power of AI Tools</h1>
+        <h1 class="career_sub">Unlock the potential of artificial intelligence. Empower your AI journey with AI Arsenal
+          today.</h1>
+        <a href="{% url 'home' %}" class="btn btn--white btn--width">Explore</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+#tool_desc {
+  display: flex;
+  margin: 100px 0;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+#tool_desc h1 {
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: -0.5px;
+  font-size: 36px;
+  font-weight: 600;
+  color: #353535;
+}
+
+#tool_desc h3 {
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: -0.5px;
+  font-size: 24px;
+  font-weight: 300;
+  color: #353535;
+}
+
+#tool_desc h2 {
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: -0.5px;
+  font-size: 40px;
+  font-weight: 600;
+  color: #353535;
+}
+
+#tool_desc p {
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: -0.5px;
+  font-size: 18px;
+  font-weight: 300;
+  color: #353535;
+}
+
+#tool_desc .toolbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
+
+#tool_desc .toolbox img{
+    width: 500px;
+}

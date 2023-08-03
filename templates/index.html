@@ -1,0 +1,247 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Bricks.io - Homepage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3a9fff">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <script>
+    $("#myCarousel").carousel({
+      interval: false
+    });
+
+  </script>
+
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header__container">
+      <div class="header__logo"><img class="header__img" src="{% static 'img/logo.png' %}">
+        <h1 class="header__title">AI Arsenal</h1>
+      </div>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+        aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div class="header__menu">
+        <nav id="navbar" class="header__nav collapse">
+          <ul class="header__elenco">
+            <li class="header__el"><a href="#" class="header__link">Home</a></li>
+            <li class="header__el"><a href="#" class="header__link">Contact us</a></li>
+            <li class="header__el header__el--blue"><a href="" class="btn btn--white">Submit →</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="sect sect--padding-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="site">
+            <h1 class="site__title"> Empowering Innovation, Unleashing Potential.</h1>
+            <h2 class="site__subtitle">Unlock the Power of AI with us</h2>
+            <div class="site__box-link">
+              <a class="btn {% if selected_category != None %}btn--revert{% endif %} btn--width" href="{% url 'home' %}"
+                style="margin-bottom: 10px;">All</a>
+
+
+              {% for category in categories %}
+
+              <a class="btn  {% if category != selected_category %}btn--revert{% endif %}" href="{{ category.get_url }}"
+                style="margin-bottom: 10px;">{{ category.category_name }}</a>
+
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sect sect--padding-bottom">
+    <div class="container">
+      <div class="row row--center">
+        <h1 class="row__title">
+          Tools
+        </h1>
+        <h2 class="row__sub">Your Path to AI Excellence.</h2>
+      </div>
+      <div class="row row--center row--margin">
+        {% for tool in tools %}
+        <div class="col-md-4 col-sm-4 price-box price-box--purple" style="margin-bottom: 50px;">
+          <div class="price-box__wrap">
+            <img src="{{tool.image.url}}" alt="" class="price-box__img">
+            <h1 class="price-box__title">
+              <a href="{{tool.get_url}}" style="text-decoration: none;">{{ tool.name }}</a>
+            </h1>
+
+
+            <a href="{{tool.get_url}}" style="text-decoration: none;">
+              <p class="price-box__price">
+                {{tool.description | truncatechars:80}}
+              </p>
+            </a>
+            {% with first_category=tool.category.first %}
+            <p class="price-box__feat">
+              <span style="border: 2px solid #8198ae; border-radius: 35px; padding: 5px 10px;">
+                {{first_category.category_name }}
+              </span>
+            </p>
+            {% endwith %}
+            <div class="price-box__btn">
+              <a class="btn btn--purple btn--width" href="{{ tool.link }}">Visit Site</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+
+
+    </div>
+  </div>
+
+<!-- PAGINATIONS -->
+  <div class="pagination">
+    {% if tools.has_previous %}
+      <a class="btn btn--revert" href="?page=1">&laquo; First</a>
+      <a class="btn btn--revert" href="?page={{ tools.previous_page_number }}">Previous</a>
+    {% endif %}
+  
+    {% for page_num in page_range %}
+      {% if tools.number == page_num %}
+        <span class="current-page btn">{{ page_num }}</span>
+      {% elif page_num == tools.paginator.ELLIPSIS %}
+        <a class="btn btn--revert" href="?page={{ tools.number|add:'1' }}">{{ page_num }}</a>
+      {% else %}
+        <a class="btn btn--revert" href="?page={{ page_num }}">{{ page_num }}</a>
+      {% endif %}
+    {% endfor %}
+  
+    {% if tools.has_next %}
+      <a class="btn btn--revert" href="?page={{ tools.next_page_number }}">Next</a>
+      <a class="btn btn--revert" href="?page={{ tools.paginator.num_pages }}">Last &raquo;</a>
+    {% endif %}
+  </div>
+  
+
+
+
+
+  <div class="sect sect--white sect--no-padding">
+    <div class="container">
+      <div class="row row--center">
+        <div class="col-md-3 col-xs-6 col-sm-6 partner">
+          <a href="#" class="partner__link">
+            <img class="partner_img" src="{% static 'img/fblogo.png' %}">
+          </a>
+        </div>
+
+        <div class="col-md-3  col-xs-6 col-sm-6 partner">
+          <a href="#" class="partner__link">
+            <img class="partner_img" src="{% static 'img/twitterlogo.png' %}">
+          </a>
+        </div>
+
+        <div class="col-md-3 col-xs-6 col-sm-6 partner">
+          <a href="#" class="partner__link">
+            <img class="partner_img" src="{% static 'img/googlelogo.png' %}">
+          </a>
+        </div>
+
+        <div class="col-md-3 col-xs-6 col-sm-6 partner">
+          <a href="#" class="partner__link">
+            <img class="partner_img" src="{% static 'img/dribbblelogo.png' %}">
+          </a>
+        </div>
+
+      </div>
+      <div class="row row--center">
+        <div class="col-md-3 col-xs-6 col-sm-6 partner">
+          <a href="#" class="partner__link">
+            <img class="partner_img" src="{% static 'img/gitlogo.png' %}">
+          </a>
+        </div>
+
+        <div class="col-md-3 col-xs-6 col-sm-6 partner">
+          <a href="#" class="partner__link">
+            <img class="partner_img" src="{% static 'img/stacklogo.png' %}">
+          </a>
+        </div>
+
+        <div class="col-md-3 col-xs-6 col-sm-6 partner">
+          <a href="#" class="partner__link">
+            <img class="partner_img" src="{% static 'img/inlogo.png' %}">
+          </a>
+        </div>
+
+        <div class="col-md-3 col-xs-6 col-sm-6 partner">
+          <a href="#" class="partner__link">
+            <img class="partner_img" src="{% static 'img/codepenlogo.png' %}">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="sect sect--violet ">
+    <img src="{% static 'img/path3762.png' %}" class="career-img">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="career_title">AI Arsenal - Unleashing the Power of AI Tools</h1>
+          <h1 class="career_sub">Unlock the potential of artificial intelligence. Empower your AI journey with AI Arsenal today.</h1>
+          <a href="#" class="btn btn--white btn--width">Explore</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 col-xs-6">
+          <img class="footer__img" src="{% static 'img/logo.png' %}">
+          <h1 class="footer__title">AI Arsenal<span class="footer__light">.io</span></h1>
+        </div>
+        <div class="col-md-10 col-xs-6">
+          <div class="footer__social">
+            <a href="#" class="footer__social-l">
+              <img src="{% static 'img/twitter.svg' %}" />
+            </a>
+            <a href="#" class="footer__social-l">
+              <img src="{% static 'img/fb.svg' %}" />
+            </a>
+
+            <a href="#" class="footer__social-l">
+              <img src="{% static 'img/website.svg' %}" />
+            </a>
+
+            <a href="" class="footer__social-l">
+              <img src="{% static 'img/linkedin.svg' %}" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
