@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        #message-container {
+            width: 90%;
+        }
+
+        .alert-error {
+            background-color: #ff4757;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .alert-success {
+            background-color: #2ecc71;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .alert-warning {
+            background-color: #dbbd5e;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .alert-message {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .closebtn {
+            float: right;
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 20px;
+            color: white;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+            opacity: 0.8;
+        }
+
+        .closebtn:hover {
+            color: white;
+            opacity: 0.5;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% if messages %}
+    <div  id="message-container">
+        {% for message in messages %}
+        <div class="{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}alert-error{% endif %}"
+            id="message">
+            <a href="#" class="closebtn" onclick="document.getElementById('message-container').style.display='none';">
+                <span aria-hidden="true">&times;</span>
+            </a>
+            <div {% if message.tags %} class="alert-message alert-{{ message.tags }}" {% endif %}>
+
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error: {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}Success: {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}Warning: {% endif %}
+                {{ message }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <br><br>
+</body>
+
+</html>

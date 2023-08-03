@@ -1,8 +1,9 @@
-from django.shortcuts import render
-from . models import Category, AiTool
+from django.shortcuts import render, redirect
+from . models import Category, AiTool, Contact
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
+from django.contrib import messages
 
 # Create your views here.
 def home(request, category_slug=None):
@@ -86,4 +87,16 @@ def search(request):
     
     
 def contact(request):
+    if request.method == 'POST':
+        name    = request.POST['name']
+        surname = request.POST['surname']
+        email   = request.POST['email']
+        phone   = request.POST['phone']
+        message = request.POST['message']
+        contact = Contact.objects.create(customer_name=name,customer_surname=surname, email = email,phone_number = phone, message = message)
+        contact.save()
+        
+        messages.success(request, 'Your details have been submitted you will be contacted shortly')
+        return redirect('contact')
+    
     return render(request, 'contacts.html')
