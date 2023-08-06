@@ -60,29 +60,42 @@ def tool_detail(request, tool_slug):
 
 
 def search(request):
+    tools_per_page = 5  # Show 5 tools per page
     if 'search' in request.GET:
         keyword = request.GET['search']
         if keyword:
-            tools = AiTool.objects.order_by('-created_date').filter(Q(description__icontains = keyword) | Q(name__icontains = keyword))
-            paginator = Paginator(tools,3)
-            page = request.GET.get('page')
-            if not page:
-                page = 1
-            paged_tools = paginator.get_page(page)
-            tools_count = tools.count()
-            paged_tools.adjusted_elided_pages = paginator.get_elided_page_range(page)
+            tools = AiTool.objects.order_by('-created_at').filter(Q(description__icontains = keyword) | Q(name__icontains = keyword))
+            paginator = Paginator(tools, tools_per_page)
+            page = request.GET.get('page', 1)
+            try:
+                paged_tools = paginator.page(page)
+            except PageNotAnInteger:
+                # If page is not an integer, deliver first page.
+                paged_tools = paginator.page(1)
+            except EmptyPage:
+                # If page is out of range, deliver last page of results.
+                paged_tools = paginator.page(paginator.num_pages)
+
+            # Calculate the range of page numbers to display, with ellipsis if needed
+            page_range = paginator.get_elided_page_range(paged_tools.number, on_each_side=2, on_ends=1)            
             
-            
-            all_tools = AiTool.objects.all()
             context = {
-                'all_tools' : all_tools,
                 'keyword' : keyword,
-                'tools' : paged_tools,
-                'tools_count' : tools_count,
+                'tools': paged_tools,
+                'page_range': page_range,
             }
-            return render(request, 'search.html', context)
+        return render(request, 'search.html', context)
     else:
         return render(request, 'search.html')
+        
+    
+
+    
+
+    
+
+
+    
     
     
     

@@ -4,33 +4,6 @@
 
 {% block body %}
 
-
-<div class="sect sect--padding-top" style="padding-bottom: 20px;">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="site">
-          <h1 class="site__title"> Empowering Innovation, Unleashing Potential.</h1>
-          <h2 class="site__subtitle">Unlock the Power of AI with us</h2>
-          <div class="site__box-link">
-            <a class="btn {% if selected_category != None %}btn--revert{% endif %} btn--width" href="{% url 'home' %}"
-              style="margin-bottom: 10px;">All</a>
-
-
-            {% for category in categories %}
-
-            <a class="btn  {% if category != selected_category %}btn--revert{% endif %}" href="{{ category.get_url }}"
-              style="margin-bottom: 10px;">{{ category.category_name }}</a>
-
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 <!-- Search BAr -->
 
   <div class="container">
@@ -38,7 +11,7 @@
       <div class="col-md-12">
         <form id="contact" class="form" method="GET" action="{% url 'search' %}">
           {% csrf_token %}
-              <input type="text" placeholder="Search - Try things like &quot;YouTube&quot; or &quot;SEO&quot; to find specific tools for your needs..."  name="search" class="form__field form__text" required></input>
+              <input type="text" placeholder="Search - Try things like &quot;YouTube&quot; or &quot;SEO&quot; to find specific tools for your needs..." name="search" class="form__field form__text" required></input>
               <button class="btn btn--up btn--width" type="submit" style="bottom: 4px;">Search</button>
         </form>
       </div>
@@ -47,14 +20,13 @@
 
 
 
-
 <div class="sect sect--padding-bottom">
   <div class="container">
     <div class="row row--center">
       <h1 class="row__title">
-        Tools
+        Search 
       </h1>
-      <h2 class="row__sub">Your Path to AI Excellence.</h2>
+      <h2 class="row__sub">Your Search Results for "<strong>{{keyword}}</strong>"</h2>
     </div>
     <div class="row row--center row--margin">
       {% for tool in tools %}

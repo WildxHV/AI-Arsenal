@@ -19,7 +19,7 @@
 
         <p>{{single_tool.description}}</p>
         <p class="price-box__feat">
-            {% for category in single_tool.category.all %}
+            {% for category in single_tool.category.all|slice:":3" %}
             <span style="border: 2px solid #8198ae; border-radius: 35px; padding: 5px 10px; margin: 0 2px;">
               {{category.category_name }}
             </span>
