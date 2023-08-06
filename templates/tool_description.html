@@ -8,6 +8,7 @@
 
 {% block body %}
 <div id="tool_desc">
+  <strong><h1>{{single_tool.name}}</h1></strong>
   <div class="tool-box">
     <div class="product">
       <img class="tablet float" src="{{single_tool.image.url}}" />
@@ -15,7 +16,7 @@
     
     <div class=" right-rounded-column">
       <div class="tool-info">
-        <h1>{{single_tool.name}}</h1>
+        <h3>Description</h3>
 
         <p>{{single_tool.description}}</p>
         <p class="price-box__feat">
