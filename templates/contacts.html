@@ -2,6 +2,12 @@
 {% load static %}
 
 
+{% block styles %}
+<title>AI Arsenal: The Ultimate Resource for AI Tools - Contact</title>
+<meta  content="AI Arsenal: The Ultimate Resource for AI Tools - Contact" property="og:title">
+
+{% endblock %}
+
 {% block body %}
 
 <div class="sect sect--padding-bottom">
@@ -15,7 +21,7 @@
       <div class="col-md-1"></div>
       <div class="col-md-4">
         <div class="contacts">
-          <a href="#" class="contacts__link"><img src="{% static 'img/logo.png' %}">
+          <a href="#" class="contacts__link"><img src="{% static 'img/logo.png' %}" alt="AI Arsenal Logo">
             <h1 class="contacts_title-ag">AI Arsenal</h1>
           </a>
           <p class="contacts__address">

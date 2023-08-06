@@ -32,7 +32,7 @@
       {% for tool in tools %}
       <div class="col-md-4 col-sm-4 price-box price-box--purple" style="margin-bottom: 50px;">
         <div class="price-box__wrap">
-          <img src="{{tool.image.url}}" alt="" class="price-box__img">
+          <img src="{{tool.image.url}}" alt="{{tool.name}} Webpage Snapshot" class="price-box__img">
           <h1 class="price-box__title">
             <a href="{{tool.get_url}}" style="text-decoration: none;">{{ tool.name }}</a>
           </h1>
@@ -86,31 +86,30 @@
 
 
 
-
 <div class="sect sect--white sect--no-padding">
   <div class="container">
     <div class="row row--center">
       <div class="col-md-3 col-xs-6 col-sm-6 partner">
         <a href="#" class="partner__link">
-          <img class="partner_img" src="{% static 'img/fblogo.png' %}">
+          <img class="partner_img" src="{% static 'img/fblogo.png' %}" alt="Facebook Logo">
         </a>
       </div>
 
       <div class="col-md-3  col-xs-6 col-sm-6 partner">
         <a href="#" class="partner__link">
-          <img class="partner_img" src="{% static 'img/twitterlogo.png' %}">
+          <img class="partner_img" src="{% static 'img/twitterlogo.png' %}" alt="Twitter Logo">
         </a>
       </div>
 
       <div class="col-md-3 col-xs-6 col-sm-6 partner">
         <a href="#" class="partner__link">
-          <img class="partner_img" src="{% static 'img/googlelogo.png' %}">
+          <img class="partner_img" src="{% static 'img/googlelogo.png' %}" alt="Google Logo">
         </a>
       </div>
 
       <div class="col-md-3 col-xs-6 col-sm-6 partner">
         <a href="#" class="partner__link">
-          <img class="partner_img" src="{% static 'img/dribbblelogo.png' %}">
+          <img class="partner_img" src="{% static 'img/dribbblelogo.png' %}" alt="Dribble Logo">
         </a>
       </div>
 
@@ -118,25 +117,25 @@
     <div class="row row--center">
       <div class="col-md-3 col-xs-6 col-sm-6 partner">
         <a href="#" class="partner__link">
-          <img class="partner_img" src="{% static 'img/gitlogo.png' %}">
+          <img class="partner_img" src="{% static 'img/gitlogo.png' %}" alt="GitHub Logo">
         </a>
       </div>
 
       <div class="col-md-3 col-xs-6 col-sm-6 partner">
         <a href="#" class="partner__link">
-          <img class="partner_img" src="{% static 'img/stacklogo.png' %}">
+          <img class="partner_img" src="{% static 'img/stacklogo.png' %}" alt="Stack OverFlow Logo">
         </a>
       </div>
 
       <div class="col-md-3 col-xs-6 col-sm-6 partner">
         <a href="#" class="partner__link">
-          <img class="partner_img" src="{% static 'img/inlogo.png' %}">
+          <img class="partner_img" src="{% static 'img/inlogo.png' %}" alt="LinkedIn Logo">
         </a>
       </div>
 
       <div class="col-md-3 col-xs-6 col-sm-6 partner">
         <a href="#" class="partner__link">
-          <img class="partner_img" src="{% static 'img/codepenlogo.png' %}">
+          <img class="partner_img" src="{% static 'img/codepenlogo.png' %}" alt="CodePen Logo">
         </a>
       </div>
     </div>

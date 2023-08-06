@@ -2,6 +2,12 @@
 {% load static %}
 
 {% block styles %}
+<title>{{single_tool.name}}</title>
+<meta  content="{{single_tool.name}}" property="og:title">
+
+{% endblock %}
+
+{% block styles %}
 <link rel="stylesheet" href="{% static 'css/tool_desc.css' %}">
 {% endblock %}
 
@@ -11,7 +17,7 @@
   <strong><h1>{{single_tool.name}}</h1></strong>
   <div class="tool-box">
     <div class="product">
-      <img class="tablet float" src="{{single_tool.image.url}}" />
+      <img class="tablet float" src="{{single_tool.image.url}}" alt="{{single_tool.name}} Web Snapshot" />
     </div>
     
     <div class=" right-rounded-column">
@@ -45,7 +51,7 @@
       {% for tool in tools %}
       <div class="col-md-4 col-sm-4 price-box price-box--purple" style="margin-bottom: 50px;">
         <div class="price-box__wrap">
-          <img src="{{tool.image.url}}" alt="" class="price-box__img">
+          <img src="{{tool.image.url}}" alt="{{tool.name}} Web Snapshot" class="price-box__img">
           <h1 class="price-box__title">
             <a href="{{tool.get_url}}" style="text-decoration: none;">{{ tool.name }}</a>
           </h1>
@@ -76,7 +82,7 @@
 
 
 <div class="sect sect--violet ">
-  <img src="{% static 'img/path3762.png' %}" class="career-img">
+  <img src="{% static 'img/path3762.png' %}" class="career-img" alt="Background Image for the Div">
   <div class="container">
     <div class="row">
       <div class="col-md-12">

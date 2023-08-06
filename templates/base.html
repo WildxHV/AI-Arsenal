@@ -4,7 +4,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>AI Arsenal - Homepage</title>
+    {% block title %}
+    {% endblock %}
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#3a9fff">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
@@ -24,7 +26,7 @@
 <body>
     <header class="header">
         <div class="container header__container">
-            <div class="header__logo"><img class="header__img" src="{% static 'img/logo.png' %}">
+            <div class="header__logo"><img class="header__img" src="{% static 'img/logo.png' %}" alt="AI Arsenal Logo">
                 <a href="{% url 'home' %}">
                     <h1 class="header__title">AI Arsenal</h1>
                 </a>
@@ -61,25 +63,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2 col-xs-6">
-                    <img class="footer__img" src="{% static 'img/logo.png' %}">
+                    <img class="footer__img" src="{% static 'img/logo.png' %}" alt="AI Arsenal Logo">
                     <!-- <h1 class="footer__title">AI Arsenal<span class="footer__light">.io</span></h1> -->
                     <h1 class="footer__title">AI Arsenal</h1>
                 </div>
                 <div class="col-md-10 col-xs-6">
                     <div class="footer__social">
                         <a href="#" class="footer__social-l">
-                            <img src="{% static 'img/twitter.svg' %}" />
+                            <img src="{% static 'img/twitter.svg' %}" alt="Twitter Logo" />
                         </a>
                         <a href="#" class="footer__social-l">
-                            <img src="{% static 'img/fb.svg' %}" />
+                            <img src="{% static 'img/fb.svg' %}" alt="Facebook Logo" />
                         </a>
 
                         <a href="#" class="footer__social-l">
-                            <img src="{% static 'img/website.svg' %}" />
+                            <img src="{% static 'img/website.svg' %}" alt="Website Logo" />
                         </a>
 
                         <a href="" class="footer__social-l">
-                            <img src="{% static 'img/linkedin.svg' %}" />
+                            <img src="{% static 'img/linkedin.svg' %}" alt="LinkedIn Logo" />
                         </a>
                     </div>
                 </div>
