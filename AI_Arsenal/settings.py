@@ -30,7 +30,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'ai-arsenal-4sxo.onrender.com']
 
 
 # Application definition
