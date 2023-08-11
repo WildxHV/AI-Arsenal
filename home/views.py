@@ -11,7 +11,7 @@ def home(request, category_slug=None):
     tools = None
     categories = Category.objects.all()
     selected_category = None
-    tools_per_page = 5  # Show 5 tools per page
+    tools_per_page = 12  # Show 5 tools per page
 
     if category_slug is not None:
         category = get_object_or_404(Category, slug=category_slug)
@@ -60,7 +60,7 @@ def tool_detail(request, tool_slug):
 
 
 def search(request):
-    tools_per_page = 5  # Show 5 tools per page
+    tools_per_page = 12  # Show 5 tools per page
     if 'search' in request.GET:
         keyword = request.GET['search']
         if keyword:
