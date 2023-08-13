@@ -90,9 +90,9 @@ body {
 }
 
 .price-box__img {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
+  width: 180px;
+  height: auto;
+  border-radius: 5%;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -830,10 +830,10 @@ body {
     font-size: 18px;
     margin-top: 10px;
   }
-  .price-box__img {
+  /* .price-box__img {
     width: 100px;
     height: 100px;
-  }
+  } */
   .price-box__wrap {
     padding: 20px 20px 30px 20px;
   }

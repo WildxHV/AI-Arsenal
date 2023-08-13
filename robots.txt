@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /static/
+Disallow: /search/
+
+Sitemap: https://ai-arsenal.xyz/sitemap.xml
